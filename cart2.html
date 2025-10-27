@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Amazon</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+      min-height: 100vh;
+    }
+
+    .navbar {
+      background: linear-gradient(45deg, #2c3e50, #34495e);
+      color: white;
+      padding: 15px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px;
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      width: 220px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .price {
+      font-size: 16px;
+      color: green;
+      margin-bottom: 10px;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .quantity button {
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 50%;
+      background: #34495e;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .quantity span {
+      margin: 0 10px;
+      font-size: 16px;
+    }
+
+    .total {
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">🛒Amazon</div>
+  <div class="container">
+    
+    <!-- Apple Watch -->
+    <div class="card">
+      <img src="https://tse4.mm.bing.net/th/id/OIP.gKTPSQroJo1dqNlDiFt_GAHaEK?pid=Api&P=0&h=180" alt="Apple Watch">
+      <h3>Apple Watch</h3>
+      <p class="price">₹10000</p>
+      <div class="quantity">
+        <button onclick="decrease(0)">-</button>
+        <span id="qty0">0</span>
+        <button onclick="increase(0)">+</button>
+      </div>
+      <p class="total">Grand Total: <span id="total0">0</span></p>
+    </div>
+
+    <!-- Samsung -->
+    <div class="card">
+      <img src="https://tse1.mm.bing.net/th/id/OIP._F8xFBG8Q3_gs-jPLRYYfQHaG5?pid=Api&P=0&h=180" alt="Samsung">
+      <h3>Samsung</h3>
+      <p class="price">₹80000</p>
+      <div class="quantity">
+        <button onclick="decrease(1)">-</button>
+        <span id="qty1">0</span>
+        <button onclick="increase(1)">+</button>
+      </div>
+      <p class="total">Grand Total: <span id="total1">0</span></p>
+    </div>
+
+    <!-- Google Pixel -->
+    <div class="card">
+      <img src="https://tse4.mm.bing.net/th/id/OIP.jhS4lgxLGM68ndx6gChA-QHaIL?pid=Api&P=0&h=180" alt="Google Pixel">
+      <h3>Google Pixel</h3>
+      <p class="price">₹60000</p>
+      <div class="quantity">
+        <button onclick="decrease(2)">-</button>
+        <span id="qty2">0</span>
+        <button onclick="increase(2)">+</button>
+      </div>
+      <p class="total">Grand Total: <span id="total2">0</span></p>
+    </div>
+
+    <!-- Nokia -->
+    <div class="card">
+      <img src="https://tse1.mm.bing.net/th/id/OIP.iVByrhZ3-9Fe8gXdTKKYeQHaLO?pid=Api&P=0&w=300&h=300" alt="Nokia">
+      <h3>Nokia</h3>
+      <p class="price">₹999</p>
+      <div class="quantity">
+        <button onclick="decrease(3)">-</button>
+        <span id="qty3">0</span>
+        <button onclick="increase(3)">+</button>
+      </div>
+      <p class="total">Grand Total: <span id="total3">0</span></p>
+    </div>
+  </div>
+
+  <script>
+    let prices = [10000, 80000, 60000, 999];
+    let qty = [0, 0, 0, 0];
+
+    function increase(index) {
+      qty[index]++;
+      update(index);
+    }
+
+    function decrease(index) {
+      if (qty[index] > 0) qty[index]--;
+      update(index);
+    }
+
+    function update(index) {
+      document.getElementById("qty" + index).innerText = qty[index];
+      document.getElementById("total" + index).innerText = qty[index] * prices[index];
+    }
+  </script>
+</body>
+</html>
